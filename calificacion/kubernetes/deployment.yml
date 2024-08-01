@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-deployment
+  labels:
+    app: app-review
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-review
+  template:
+    metadata:
+      labels:
+        app: app-review
+    spec:
+      containers:
+        - name: app-review
+          image: 076644905011.dkr.ecr.us-east-1.amazonaws.com/bookreview:latest
+          imagePullPolicy: Always    
+          ports:
+            - containerPort: 5001
